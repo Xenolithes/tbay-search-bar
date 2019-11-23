@@ -1,5 +1,6 @@
-# tbay-search-bar
-tbay search bar
+Tbay Search Bar
+
+A search bar micro service for Tbay
 
 WORKING EXAMPLE
 ![Image Grid Demo](Tbay25.gif)
