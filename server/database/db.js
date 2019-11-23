@@ -3,16 +3,16 @@ require('locus')
 
 const pool = new Pool({
   user: "student",
-  host: "fec-carousel.c2zm8vul16cb.us-east-2.rds.amazonaws.com",
-  database:"fec-teabay-carousel",
+  host: "fec-teabay-carousel.c2zm8vul16cb.us-east-2.rds.amazonaws.com",
+  database:"postgres",
   password:"HRATX44student",
   port:5432,
 })
 
 const client = new Client({
   user: "student",
-  host: "fec-carousel.c2zm8vul16cb.us-east-2.rds.amazonaws.com",
-  database:"fec-teabay-carousel",
+  host: "fec-teabay-carousel.c2zm8vul16cb.us-east-2.rds.amazonaws.com",
+  database:"postgres",
   password:"HRATX44student",
   port:5432,
 })
@@ -26,7 +26,7 @@ client.query('SELECT * FROM product WHERE id = 1;', (err, res) => {
 function getProduct(id, callback){
   let queryString = `SELECT * From product WHERE id = ${id};`;
   client.query(queryString, (error, products) => {
-    console.log(products)
+    // console.log(products)
     if(error){
       callback(error)
     }else{
@@ -37,6 +37,7 @@ function getProduct(id, callback){
 }
 
 function getOptions (currentSearchInput, callback) {
+  console.log(currentSearchInput.category_id)
   let queryString = 
   currentSearchInput.category_id === 0 ? 
   `SELECT * FROM product WHERE product_name ~* '^${currentSearchInput.search}.*';`:
